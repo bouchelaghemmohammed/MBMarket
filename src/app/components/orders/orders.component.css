@@ -1,0 +1,183 @@
+.page-header {
+  margin-bottom: 30px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.order-header {
+  background: rgba(15, 23, 42, 0.4);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.order-id {
+  font-weight: 600;
+  margin-right: 15px;
+  color: var(--text-main);
+}
+
+.order-date {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.pending {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.status-badge.processing {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.status-badge.shipped {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+.status-badge.delivered {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.order-body {
+  padding: 20px;
+}
+
+.order-items {
+  margin-bottom: 15px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buyer-tag {
+  font-size: 0.8rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.item-price {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.seller-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  padding-top: 6px;
+  flex-wrap: wrap;
+}
+
+.seller-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn-contact-seller {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 4px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-contact-seller:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.order-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-qty {
+  color: var(--text-muted);
+}
+
+.order-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+

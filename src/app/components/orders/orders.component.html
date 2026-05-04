@@ -1,0 +1,106 @@
+<div
+  class="container animate-fade-in"
+  style="padding-top: 40px; padding-bottom: 60px"
+>
+  <div class="page-header">
+    <div>
+      <h2>My Orders</h2>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px">
+        Track your purchases and contact sellers
+      </p>
+    </div>
+  </div>
+
+  <div
+    *ngIf="loading"
+    style="padding: 60px; text-align: center; color: var(--text-muted)"
+  >
+    Loading orders…
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="empty-state glass-panel">
+    <h3>No orders yet</h3>
+    <p>
+      You haven't placed any orders. Head to the marketplace to start shopping!
+    </p>
+    <a
+      routerLink="/products"
+      class="btn-primary"
+      style="display: inline-block; margin-top: 12px; text-decoration: none"
+    >
+      Browse Products
+    </a>
+  </div>
+
+  <div *ngIf="!loading && orders.length > 0" class="orders-list">
+    <div
+      *ngFor="let order of orders"
+      class="order-card glass-panel animate-fade-in"
+    >
+      <!-- Order Header -->
+      <div class="order-header">
+        <div class="order-meta">
+          <span class="order-id"
+            >Order #{{ order._id.substring(order._id.length - 8) }}</span
+          >
+          <span class="order-date">{{
+            order.createdAt | date: "mediumDate"
+          }}</span>
+          <span class="buyer-tag" *ngIf="order.userId?.username">
+            👤 {{ order.userId.username || order.userId.email }}
+          </span>
+        </div>
+        <span class="status-badge" [ngClass]="order.status">
+          {{ order.status }}
+        </span>
+      </div>
+
+      <!-- Order Items -->
+      <div class="order-body">
+        <div class="order-items">
+          <div *ngFor="let item of order.products" class="order-item">
+            <div class="item-info">
+              <span class="item-name" *ngIf="item.productId">{{
+                item.productId.name
+              }}</span>
+              <span
+                class="item-name"
+                style="color: var(--text-muted)"
+                *ngIf="!item.productId"
+                >Product deleted</span
+              >
+              <span class="item-qty">× {{ item.quantity }}</span>
+              <span class="item-price" *ngIf="item.productId?.price">
+                {{ item.productId.price * item.quantity | price }}
+              </span>
+            </div>
+
+            <!-- Seller info + contact button -->
+            <div class="seller-row" *ngIf="item.productId?.sellerId">
+              <span class="seller-label">
+                Sold by
+                <strong>{{
+                  item.productId.sellerId.username ||
+                    item.productId.sellerId.email
+                }}</strong>
+              </span>
+              <a
+                [routerLink]="['/chat']"
+                [queryParams]="{ user: item.productId.sellerId._id }"
+                class="btn-contact-seller"
+              >
+                💬 Contact Seller
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total -->
+        <div class="order-total">
+          <span>Total (taxes incl.)</span>
+          <span class="total-amount">{{ order.totalAmount | price }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
