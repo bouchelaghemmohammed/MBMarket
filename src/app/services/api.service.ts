@@ -47,8 +47,16 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/orders`, this.getHeaders());
   }
 
+  getSellerOrders(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/orders/seller`, this.getHeaders());
+  }
+
   createOrder(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/orders`, data, this.getHeaders());
+  }
+
+  updateOrderStatus(id: string, status: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/orders/${id}`, { status }, this.getHeaders());
   }
 
   // Profile

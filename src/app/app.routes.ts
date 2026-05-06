@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { SellerOrdersComponent } from './components/seller-orders/seller-orders.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ChatComponent } from './components/chat/chat.component';
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'my-products', component: MyProductsComponent, canActivate: [authGuard] },
   { path: 'orders', component: OrdersComponent, canActivate: [authGuard] },
+  { path: 'seller-orders', component: SellerOrdersComponent, canActivate: [authGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
   { path: 'chat', component: ChatComponent, canActivate: [authGuard] },

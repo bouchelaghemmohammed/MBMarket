@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
@@ -98,6 +98,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   viewDetails(productId: string) {
     this.router.navigate(['/product', productId]);
+  }
+
+  showScrollTop = false;
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.showScrollTop = window.scrollY > 320;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   ngOnDestroy() {
